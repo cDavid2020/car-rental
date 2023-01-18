@@ -14,9 +14,6 @@ export const calcRentalCarCost = ({ car, person, days }) => {
   // The daily rate of the car multiplied by the number of days
   return car.dailyRate * days;
 };
-
-
-
 /*
 This function takes in an object that contains car, person, and days properties as its parameter and uses object destructuring to extract the values. It uses these values to calculate the total cost of renting the car by multiplying the car's daily rate with the number of days, adding the service fee, and adding the tax rate. If the person's age is under 25, it adds an additional $10 per day to the total cost and returns the final total cost.
 */
@@ -31,3 +28,7 @@ function calcRentalCarCost({ car, person, days }) {
   return totalCost;
 }
 
+export function calcRentalCarCost({make, model, year, color, dailyRate}, person, days) {
+  const totalCost = dailyRate * days + SERVICE_FEE + (dailyRate * days + SERVICE_FEE) * TAX_RATE + underAgeFee(person) * days;
+  return totalCost;
+}
